@@ -9,8 +9,6 @@ class Logger implements LoggerInterface
 {
     public function log($message)
     {
-        echo $message;
-        return;
         file_put_contents('app.log', $message, FILE_APPEND);
     }
 }
