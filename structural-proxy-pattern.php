@@ -42,5 +42,8 @@ class ProxyImage implements ImageInterface
 }
 
 // Client
-$image = new ProxyImage('image.png');
+$image = new Image('image.png'); // 5 seconds
+$image->draw();
+
+$image = new ProxyImage('image.png'); // 0 seconds
 $image->draw();
