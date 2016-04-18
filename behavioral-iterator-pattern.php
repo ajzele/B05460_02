@@ -12,7 +12,7 @@ class ProductIterator implements \Iterator
 
     public function current()
     {
-        return $this->productsCollection->getTitle($this->position);
+        return $this->productsCollection->getProduct($this->position);
     }
 
     public function key()
@@ -32,44 +32,44 @@ class ProductIterator implements \Iterator
 
     public function valid()
     {
-        return !is_null($this->productsCollection->getTitle($this->position));
+        return !is_null($this->productsCollection->getProduct($this->position));
     }
 }
 
 class ProductCollection implements \IteratorAggregate
 {
-    private $titles = array();
+    private $products = array();
 
     public function getIterator()
     {
         return new ProductIterator($this);
     }
 
-    public function addTitle($string)
+    public function addProduct($string)
     {
-        $this->titles[] = $string;
+        $this->products[] = $string;
     }
 
-    public function getTitle($key)
+    public function getProduct($key)
     {
-        if (isset($this->titles[$key])) {
-            return $this->titles[$key];
+        if (isset($this->products[$key])) {
+            return $this->products[$key];
         }
         return null;
     }
 
     public function isEmpty()
     {
-        return empty($titles);
+        return empty($products);
     }
 }
 
-$productsCollection = new ProductCollection();
-$productsCollection->addTitle('Design Patterns');
-$productsCollection->addTitle('PHP7 is the best');
-$productsCollection->addTitle('Laravel Rules');
-$productsCollection->addTitle('DHH Rules');
+$products = new ProductCollection();
+$products->addProduct('T-Shirt Red');
+$products->addProduct('T-Shirt Blue');
+$products->addProduct('T-Shirt Green');
+$products->addProduct('T-Shirt Yellow');
 
-foreach ($productsCollection as $product) {
+foreach ($products as $product) {
     var_dump($product);
 }
