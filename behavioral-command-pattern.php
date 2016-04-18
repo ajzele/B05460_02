@@ -20,31 +20,31 @@ class LightBulbControl
 
 class TurnOnLightBulb implements LightBulbCommand
 {
-    private $radioControl;
+    private $lightBulbControl;
 
-    public function __construct(LightBulbControl $radioControl)
+    public function __construct(LightBulbControl $lightBulbControl)
     {
-        $this->radioControl = $radioControl;
+        $this->lightBulbControl = $lightBulbControl;
     }
 
     public function execute()
     {
-        $this->radioControl->turnOn();
+        $this->lightBulbControl->turnOn();
     }
 }
 
 class TurnOffLightBulb implements LightBulbCommand
 {
-    private $radioControl;
+    private $lightBulbControl;
 
-    public function __construct(LightBulbControl $radioControl)
+    public function __construct(LightBulbControl $lightBulbControl)
     {
-        $this->radioControl = $radioControl;
+        $this->lightBulbControl = $lightBulbControl;
     }
 
     public function execute()
     {
-        $this->radioControl->turnOff();
+        $this->lightBulbControl->turnOff();
     }
 }
 
