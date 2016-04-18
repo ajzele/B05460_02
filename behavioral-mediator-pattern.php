@@ -20,8 +20,8 @@ class BookMediator
     {
         return $this->titleObj;
     }
-    // when title or author change case, this makes sure the other
-    // stays in sync
+    
+    // sync everything
     function change(BookColleague $changingClassIn)
     {
         if ($changingClassIn instanceof BookAuthorColleague) {
@@ -160,7 +160,7 @@ class BookTitleColleague extends BookColleague
     }
 }
 
-$mediator = new BookMediator('Gamma, Helm, Johnson, and Vlissides', 'Design Patterns');
+$mediator = new BookMediator('Branko A.', 'Magento 2 Developer\'s guide');
 
 $author = $mediator->getAuthor();
 $title = $mediator->getTitle();
