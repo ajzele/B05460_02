@@ -1,51 +1,40 @@
 <?php
 
-interface LoggerInterface
-{
+interface LoggerInterface {
     public function log($message);
 }
 
-class Logger implements LoggerInterface
-{
-    public function log($message)
-    {
+class Logger implements LoggerInterface {
+    public function log($message) {
         file_put_contents('app.log', $message, FILE_APPEND);
     }
 }
 
-abstract class LoggerDecorator implements LoggerInterface
-{
+abstract class LoggerDecorator implements LoggerInterface {
     protected $logger;
 
-    public function __construct(Logger $logger)
-    {
+    public function __construct(Logger $logger) {
         $this->logger = $logger;
     }
 
     abstract public function log($message);
 }
 
-class ErrorLoggerDecorator extends LoggerDecorator
-{
-    public function log($message)
-    {
+class ErrorLoggerDecorator extends LoggerDecorator {
+    public function log($message) {
         $this->logger->log('ERROR: ' . $message);
     }
 
 }
 
-class WarningLoggerDecorator extends LoggerDecorator
-{
-    public function log($message)
-    {
+class WarningLoggerDecorator extends LoggerDecorator {
+    public function log($message) {
         $this->logger->log('WARNING: ' . $message);
     }
 }
 
-class NoticeLoggerDecorator extends LoggerDecorator
-{
-    public function log($message)
-    {
+class NoticeLoggerDecorator extends LoggerDecorator {
+    public function log($message) {
         $this->logger->log('NOTICE: ' . $message);
     }
 }
