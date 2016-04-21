@@ -1,54 +1,44 @@
 <?php
 
-interface Graphic
-{
+interface Graphic {
     public function draw();
 }
 
-class CompositeGraphic implements Graphic
-{
+class CompositeGraphic implements Graphic {
     private $graphics = array();
 
-    public function add($graphic)
-    {
+    public function add($graphic) {
         $objId = spl_object_hash($graphic);
         $this->graphics[$objId] = $graphic;
     }
 
-    public function remove($graphic)
-    {
+    public function remove($graphic) {
         $objId = spl_object_hash($graphic);
         unset($this->graphics[$objId]);
     }
 
-    public function draw()
-    {
+    public function draw() {
         foreach ($this->graphics as $graphic) {
             $graphic->draw();
         }
     }
 }
 
-class Circle implements Graphic
-{
+class Circle implements Graphic {
     public function draw()
     {
         echo 'draw-circle';
     }
 }
 
-class Square implements Graphic
-{
-    public function draw()
-    {
+class Square implements Graphic {
+    public function draw() {
         echo 'draw-square';
     }
 }
 
-class Triangle implements Graphic
-{
-    public function draw()
-    {
+class Triangle implements Graphic {
+    public function draw() {
         echo 'draw-triangle';
     }
 }
