@@ -1,59 +1,44 @@
 <?php
 
-interface MailerInterface
-{
+interface MailerInterface {
     public function setSender(MessagingInterface $sender);
-
     public function send($body);
 }
 
-abstract class Mailer implements MailerInterface
-{
+abstract class Mailer implements MailerInterface {
     protected $sender;
 
-    public function setSender(MessagingInterface $sender)
-    {
+    public function setSender(MessagingInterface $sender) {
         $this->sender = $sender;
     }
 }
 
-class PHPMailer extends Mailer
-{
-    public function send($body)
-    {
+class PHPMailer extends Mailer {
+    public function send($body) {
         $body .= "\n\n Sent from a phpmailer.";
-
         return $this->sender->send($body);
     }
 }
 
-class SwiftMailer extends Mailer
-{
-    public function send($body)
-    {
+class SwiftMailer extends Mailer {
+    public function send($body) {
         $body .= "\n\n Sent from a SwiftMailer.";
-
         return $this->sender->send($body);
     }
 }
 
-interface MessagingInterface
-{
+interface MessagingInterface {
     public function send($body);
 }
 
-class TextMessage implements MessagingInterface
-{
-    public function send($body)
-    {
+class TextMessage implements MessagingInterface {
+    public function send($body) {
         echo 'TextMessage > send > $body: ' . $body;
     }
 }
 
-class HtmlMessage implements MessagingInterface
-{
-    public function send($body)
-    {
+class HtmlMessage implements MessagingInterface {
+    public function send($body) {
         echo 'HtmlMessage > send > $body: ' . $body;
     }
 }
