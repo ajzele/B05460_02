@@ -1,49 +1,39 @@
 <?php
 
-interface LightBulbCommand
-{
+interface LightBulbCommand {
     public function execute();
 }
 
-class LightBulbControl
-{
-    public function turnOn()
-    {
+class LightBulbControl {
+    public function turnOn() {
         echo 'LightBulb turnOn';
     }
 
-    public function turnOff()
-    {
+    public function turnOff() {
         echo 'LightBulb turnOff';
     }
 }
 
-class TurnOnLightBulb implements LightBulbCommand
-{
+class TurnOnLightBulb implements LightBulbCommand {
     private $lightBulbControl;
 
-    public function __construct(LightBulbControl $lightBulbControl)
-    {
+    public function __construct(LightBulbControl $lightBulbControl) {
         $this->lightBulbControl = $lightBulbControl;
     }
 
-    public function execute()
-    {
+    public function execute() {
         $this->lightBulbControl->turnOn();
     }
 }
 
-class TurnOffLightBulb implements LightBulbCommand
-{
+class TurnOffLightBulb implements LightBulbCommand {
     private $lightBulbControl;
 
-    public function __construct(LightBulbControl $lightBulbControl)
-    {
+    public function __construct(LightBulbControl $lightBulbControl) {
         $this->lightBulbControl = $lightBulbControl;
     }
 
-    public function execute()
-    {
+    public function execute() {
         $this->lightBulbControl->turnOff();
     }
 }
