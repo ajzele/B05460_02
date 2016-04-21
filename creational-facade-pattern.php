@@ -1,26 +1,21 @@
 <?php
 
-class Product
-{
-    public function getQty()
-    {
+class Product {
+    public function getQty() {
         // Implementation
     }
 }
 
-class QuickOrderFacade
-{
+class QuickOrderFacade {
     private $product = null;
     private $orderQty = null;
 
-    public function __construct($product, $orderQty)
-    {
+    public function __construct($product, $orderQty) {
         $this->product = $product;
         $this->orderQty = $orderQty;
     }
 
-    public function generateOrder()
-    {
+    public function generateOrder() {
         if ($this->qtyCheck()) {
             $this->addToCart();
             $this->calculateShipping();
@@ -29,13 +24,11 @@ class QuickOrderFacade
         }
     }
 
-    private function addToCart()
-    {
+    private function addToCart() {
         // Implementation...
     }
 
-    private function qtyCheck()
-    {
+    private function qtyCheck() {
         if ($this->product->getQty() > $this->orderQty) {
             return true;
         } else {
@@ -43,18 +36,15 @@ class QuickOrderFacade
         }
     }
 
-    private function calculateShipping()
-    {
+    private function calculateShipping() {
         // Implementation...
     }
 
-    private function applyDiscount()
-    {
+    private function applyDiscount() {
         // Implementation...
     }
 
-    private function placeOrder()
-    {
+    private function placeOrder() {
         // Implementation...
     }
 }
