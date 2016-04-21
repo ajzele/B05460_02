@@ -1,37 +1,30 @@
 <?php
 
-interface Shape
-{
+interface Shape {
     public function draw();
 }
 
-class Circle implements Shape
-{
+class Circle implements Shape {
     private $colour;
     private $radius;
 
-    public function __construct($colour)
-    {
+    public function __construct($colour) {
         $this->colour = $colour;
     }
 
-    public function draw()
-    {
+    public function draw() {
         echo sprintf('Colour %s, radius %s.', $this->colour, $this->radius);
     }
 
-    public function setRadius($radius)
-    {
+    public function setRadius($radius) {
         $this->radius = $radius;
     }
 }
 
-class ShapeFactory
-{
+class ShapeFactory {
     private $circleMap;
 
-    public function getCircle($colour)
-    {
+    public function getCircle($colour) {
         if (!isset($this->circleMap[$colour])) {
             $circle = new Circle($colour);
             $this->circleMap[$colour] = $circle;
