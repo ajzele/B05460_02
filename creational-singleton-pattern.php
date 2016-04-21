@@ -1,35 +1,25 @@
 <?php
 
-class Logger
-{
-    // Holds an instance of the class
+class Logger {
     private static $instance;
-
-    // Implements singleton, always returns same instance
-    public static function getInstance()
-    {
+    
+    public static function getInstance() {
         if (!isset(self::$instance)) {
             self::$instance = new self;
         }
 
         return self::$instance;
     }
-
-    // Imaginary instance method, logs notices
-    public function logNotice($msg)
-    {
+    
+    public function logNotice($msg) {
         return 'logNotice' . $msg;
     }
-
-    // Imaginary instance method, logs warnings
-    public function logWarning($msg)
-    {
+    
+    public function logWarning($msg) {
         return 'logWarning' . $msg;
     }
-
-    // Imaginary instance method, logs errors
-    public function logError($msg)
-    {
+    
+    public function logError($msg) {
         return 'logError: ' . $msg;
     }
 }
