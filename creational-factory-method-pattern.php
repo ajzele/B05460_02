@@ -1,29 +1,21 @@
 <?php
 
-interface CarFactory
-{
+interface CarFactory {
     public function makeCar();
 }
 
-interface Car
-{
+interface Car {
     public function getType();
 }
 
-/* Concrete implementations of the factory and car */
-
-class ChevroletFactory implements CarFactory
-{
-    public function makeCar()
-    {
+class ChevroletFactory implements CarFactory {
+    public function makeCar() {
         return new Chevrolet();
     }
 }
 
-class Chevrolet implements Car
-{
-    public function getType()
-    {
+class Chevrolet implements Car {
+    public function getType() {
         return 'Chevrolet';
     }
 }
