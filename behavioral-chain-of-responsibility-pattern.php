@@ -1,46 +1,48 @@
 <?php
 
-abstract class Logger {
-    private $next = null;
+//Twitter / Facebook / Pinterest
 
-    public function setNext(Logger $logger) {
-        $this->next = $logger;
-        return $this->next;
+abstract class SocialNotifier {
+    private $notifyNext = null;
+
+    public function notifyNext(SocialNotifier $notifier) {
+        $this->notifyNext = $notifier;
+        return $this->notifyNext;
     }
 
-    final public function log($message) {
-        $this->writeLog($message);
+    final public function push($message) {
+        $this->publish($message);
 
-        if ($this->next !== null) {
-            $this->next->log($message);
+        if ($this->notifyNext !== null) {
+            $this->notifyNext->push($message);
         }
     }
 
-    abstract protected function writeLog($message);
+    abstract protected function publish($message);
 }
 
-class EmailLogger extends Logger {
-    public function writeLog($message) {
-        echo 'Logging to email: ' . $message;
+class TwitterSocialNotifier extends SocialNotifier {
+    public function publish($message) {
+        // Implementation...
     }
 }
 
-class ErrorLogger extends Logger {
-    protected function writeLog($message) {
-        echo 'Logging to stderr: ' . $message;
+class FacebookSocialNotifier extends SocialNotifier {
+    protected function publish($message) {
+        // Implementation...
     }
 }
 
-class StdoutLogger extends Logger {
-    protected function writeLog($message) {
-        echo 'Logging to stdout: ' . $message;
+class PinterestSocialNotifier extends SocialNotifier {
+    protected function publish($message) {
+        // Implementation...
     }
 }
 
 // Client
-$logger = new StdoutLogger();
+$notifier = new TwitterSocialNotifier();
 
-$logger->setNext(new ErrorLogger())
-    ->setNext(new EmailLogger());
+$notifier->notifyNext(new FacebookSocialNotifier())
+    ->notifyNext(new PinterestSocialNotifier());
 
-$logger->log('Log triggered!');
+$notifier->push('Awesome new product available!');
