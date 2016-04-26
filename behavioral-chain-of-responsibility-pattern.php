@@ -1,7 +1,5 @@
 <?php
 
-//Twitter / Facebook / Pinterest
-
 abstract class SocialNotifier {
     private $notifyNext = null;
 
