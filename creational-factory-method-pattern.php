@@ -1,26 +1,26 @@
 <?php
 
-interface CarFactory {
-    public function makeCar();
+interface ProductFactory {
+    public function makeProduct();
 }
 
-interface Car {
+interface Product {
     public function getType();
 }
 
-class ChevroletFactory implements CarFactory {
-    public function makeCar() {
-        return new Chevrolet();
+class SimpleProductFactory implements ProductFactory {
+    public function makeProduct() {
+        return new SimpleProduct();
     }
 }
 
-class Chevrolet implements Car {
+class SimpleProduct implements Product {
     public function getType() {
-        return 'Chevrolet';
+        return 'SimpleProduct';
     }
 }
 
 /* Client */
-$factory = new ChevroletFactory();
-$car = $factory->makeCar();
-echo $car->getType();
+$factory = new SimpleProductFactory();
+$product = $factory->makeProduct();
+echo $product->getType();
